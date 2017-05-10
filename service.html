@@ -1,0 +1,45 @@
+<htm>
+
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+    </head>
+
+    <body>
+        <div ng-app="myapp" ng-controller="serviceController">
+            <h3>Enter Number</h3>
+            <input type="number" ng-model="a">
+            <button ng-click="square()">X<sup>2</sup></button>
+            <button ng-click="tquare()">X<sup>3</sup></button>
+            <p>{{result}}</p>
+        </div>
+        <script>
+            var app = angular.module("myapp", []);
+
+            //Create service using factory
+            app.factory('mathService', function () {
+                var result = {};
+                result.multiply = function (a) {
+                    return a * a;
+                }
+                return result;
+            });
+            //Create service using Service
+            app.service('calcService', function () {
+                var result = {};
+                result.multiply = function (a) {
+                    return a * a * a;
+                }
+                return result;
+            });
+            //Use as many servics as requierd in function
+            app.controller('serviceController', function ($scope, mathService, calcService) {
+                $scope.square = function () {
+                    $scope.result = mathService.multiply($scope.a);
+                }
+                $scope.tquare = function() {
+                    $scope.result = calcService.multiply($scope.a);//Make Sure passing textbox value
+                }
+            });
+        </script>
+    </body>
+</htm>

@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>Angularjs with sqlDB</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+    <script src="carApp.js"></script>
+    <script src="carController.js"></script>
+</head>
+<body ng-app="myapp">
+<form id="form1" ng-controller="carController" ng-submit="InsertCar()">
+    <div>
+        <p>Name: </p>
+        <input id="Text1" type="text" placeholder="Select name" ng-model="cars.name" />
+        <p>Email: </p>
+        <input id="Text2" type="description" placeholder="Description" ng-model="cars.description" />
+        <br /><br /><br />
+        <input id="Button1" type="submit" value="Register" />
+    </div>
+    <div>
+        <input type="button" id="btnFetch" value="Fetch" ng-click="getCar()" />
+    </div>
+    <div id="showdata">
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>Description</td>
+        </tr>
+        <tr ng-repeat = "car in cars">
+            <td>{{car.name}}</td>
+            <td>{{car.description}}</td>
+        </tr>
+    </table>            
+    </div>
+</form>
+</body>
+</html>

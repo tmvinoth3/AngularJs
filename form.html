@@ -1,0 +1,74 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+    <script src="myapp.js"></script>
+    <script src="formController.js"></script>
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+    
+    table tr:nth-child(odd) {
+        background-color: #f2f2f2;
+    }
+    
+    table tr:nth-child(even) {
+        background-color: #ffffff;
+    }
+</style>
+</head>
+
+<body ng-app="myapp">
+        <div ng-include src="'SepJs.html'"></div>
+    
+    <form name="myform" ng-controller="formController">
+        <table>
+            <tr>
+                <td>
+                    <h3>First Name</h3>
+                </td>
+                <td>
+                    <input type="text" name="fname" ng-model="fname" required>
+                    <span style="color:red" ng-show="myform.fname.$dirty && myform.fname.$invalid">
+           <span ng-show="myform.fname.$error.required">First name is required</span>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3>Last Name</h3>
+                </td>
+                <td>
+                    <input type="text" name="lname" ng-model="lname" required>
+                    <span style="color:red" ng-show="myform.lname.$error.required">Last name is required</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3>Email</h3>
+                </td>
+                <td>
+                    <input type="email" name="email" ng-model="email" required>
+                    <span style="color:red" ng-show="myform.email.$error.required">Last name is required</span>
+                    <span style="color:red" ng-show="myform.email.$error.email">Invalid Email</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" value="Reset" ng-click="Reset()">
+                </td>
+                <td>
+                    <input type="button" value="Submit">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+
+</html>

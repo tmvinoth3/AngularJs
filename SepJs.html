@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+    <script src="myapp.js"></script>
+    <script src="fullController.js"></script>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        
+        table tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+        
+        table tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+
+<body ng-app="myapp">
+
+    <div ng-controller="fullController">
+        <table>
+            <tr>
+                <td>
+                    <p>Enter FirstName : <input type="text" ng-model="student.fname" /></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Enter LastName : <input type="text" ng-model="student.lname" /></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3>FullName : {{student.fullname()}}</h3>
+                </td>
+            </tr>
+            <tr>
+
+
+                <td>
+                    <table id="inner" style="width:100%">
+                        <tr>
+                            <th>
+                                <h3>Subject Name</h3>
+                            </th>
+                            <th>
+                                <h3>Marks</h3>
+                            </th>
+                        </tr>
+                        <tr ng-repeat="sub in student.subject">
+                            <td>{{sub.name}}</td>
+                            <td>{{sub.marks}}</td>
+                        </tr>
+                    </table>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

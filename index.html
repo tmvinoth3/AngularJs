@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+    </head>
+    <body ng-app="myapp">
+<div ng-controller="helloController">
+<h1>This is {{hello.title}}</h1>
+</div>
+
+<div ng-controller="fullController">
+<p>Enter FirstName : <input type="text" ng-model="student.fname" /></p>
+<p>Enter LastName : <input type="text" ng-model="student.lname" /></p>
+<p>Filter : <input type="text" ng-model="countryName" /></p>
+<h3>FullName : {{student.fullname()}}</h3>
+</div>
+
+<div ng-init="Countries=[{name:'India',Count:'5'},{name:'US',Count:'2'}]; marks=[90,88,87,89]">
+    
+<ol>
+    <li ng-repeat="c in Countries|filter:countryName|orderBy:'Name'">
+        {{'Name-'+ c.name +', Count-'+ c.Count}}
+    </li>
+</ol>
+<p>Mark = {{marks[2]}}</p>
+</div>
+<div>
+    <p>Enter Name : <input type="text" ng-model="name" /></p>
+    <h3>Hai <span ng-bind="name"></span> </h3>
+</div>
+
+<div>
+    <input type="checkbox" ng-model="hid">
+   <button ng-hide="hid">hide</button>
+    <button ng-disabled="hid">click</button>
+    <button ng-show="hid">show</button>
+</div>
+<script>
+    var app = angular.module("myapp",[]);
+
+    app.controller("helloController",function($scope)
+    {
+$scope.hello = {};
+$scope.hello.title = "AngularJs";
+    });
+
+app.controller('fullController',function($scope){
+$scope.student={
+    fname : "",
+    lname : "",
+    fullname : function(){
+        return $scope.student.fname+" "+$scope.student.lname;
+    }
+}
+});
+    </script>
+    </body>
+</html>
